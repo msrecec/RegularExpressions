@@ -6,6 +6,137 @@ import java.util.regex.Pattern;
 public class Main {
 
     public static void main(String[] args) {
+
+        // demo();
+
+        // firstChallenge1();
+
+        // firstChallenge2();
+
+        // firstChallenge4();
+
+        // firstChallenge5();
+
+        // firstChallenge6();
+
+        firstChallenge7();
+
+    }
+
+    /**
+     * Write the string literal regular expression that will match the following String. User the String.matches()
+     * method to verify your answer
+     *
+     * String challenge1 = "I want a bike."
+     *
+     */
+
+    public static void firstChallenge1() {
+        String patternString = "I want a bike.";
+        String challenge1 = "I want a bike.";
+        Pattern pattern = Pattern.compile(patternString);
+        Matcher matcher = pattern.matcher(challenge1);
+        System.out.println(matcher.matches());
+    }
+
+    /**
+     * Now write a regular expression that will match "I want a bike." and "I want a ball." Verify your answer
+     * using the matches() method
+     *
+     * Match two strings beginning with "I want a "
+     *
+     */
+
+    public static void firstChallenge2() {
+        String challenge1 = "I want a bike.";
+        String challenge2 = "I want a ball.";
+
+        // \w will match 0-9 a-z and underscore "_" * is a quantifier that means zero or more
+        // . means any other character
+
+        String patternString = "^I want a \\w+.$";
+        Pattern pattern = Pattern.compile(patternString);
+        Matcher matcher = pattern.matcher(challenge1);
+        System.out.println(matcher.matches());
+        matcher = pattern.matcher(challenge2);
+        System.out.println(matcher.matches());
+        // this means to match everything that starts with I want a followed by group (bike or ball) continued by any other character
+        String regExp1= "^I want a (bike|ball).$";
+        pattern = Pattern.compile(regExp1);
+        matcher = pattern.matcher(challenge1);
+        System.out.println(matcher.matches());
+        matcher = pattern.matcher(challenge2);
+        System.out.println(matcher.matches());
+    }
+
+    /**
+     * Replace all occurrences of blank with an underscore for the following string. Print out the resulting string.
+     * String challenge4 = "Replace all blanks with underscores.";
+     *
+     */
+
+    public static void firstChallenge4() {
+        System.out.println("Replace all blanks with underscores.".replaceAll("\\s", "_"));
+    }
+
+    /**
+     * Write a regular expression that will match the following string in its entirety. Use the String.matches() method
+     * to verify your answer.
+     *
+     * String challenge5 = "aaabccccccccdddefffg";
+     *
+     */
+
+    public static void firstChallenge5() {
+        // String regex = "^[abcdefg]*";
+        // String regex = "^[a-g]+";
+        String regex = "^(a|b|c|d|e|f|g)*";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher("aaabccccccccdddefffg");
+        System.out.println(matcher.matches());
+    }
+
+    /**
+     * Write a regular expression that will only match the challenge 5 string in its entirety.
+     *
+     * String challenge5 = "aaabccccccccdddefffg";
+     *
+     */
+
+    public static void firstChallenge6() {
+        // String regex = "^[abcdefg]*";
+        // String regex = "^[a-g]+";
+        // String regex = "^(a|b|c|d|e|f|g){20}";
+        // three a followed by b followed by 8 c followed by 3 d followed by e followed by 3 f followed by g
+        String regex = "^a{3}bc{8}d{3}ef{3}g";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher("aaabccccccccdddefffg");
+        System.out.println(matcher.matches());
+        System.out.println("aaabccccccccdddefffg".replaceAll(regex, "REPLACED"));
+    }
+
+    /**
+     * Write a regular expression that will match a string that starts with a series of letters.
+     * The letters must be followed by a period. After the period there must be a series of digits. The string
+     * "kjisl.22" would match. The string "f5.12a" would not. Use this string to test your regular expression.
+     *
+     * String challenge7 = "abcd.135";
+     *
+     */
+
+    public static void firstChallenge7() {
+
+        String challenge7 = "abcd.135";
+        // String regex = "^[a-zA-Z]+.[0-9]+$";
+        // String regex = "^[a-zA-Z]+\\.[0-9]+$";
+        String regex = "^[a-zA-Z]+\\.\\d+$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(challenge7);
+        System.out.println(matcher.matches());
+
+    }
+
+    public static void demo() {
         String string = "I am a string. Yes, I am.";
         System.out.println(string);
         String yourString = string.replaceAll("I", "You");
@@ -19,12 +150,14 @@ public class Main {
 
         String secondString = "abcDeeeF12GhhabcDeeeiiiijkl99z";
         // create a replacement if string starts with ...
+        // this will replace "abcDeee" at the start of the string with "YYY"
         System.out.println(secondString.replaceAll("^abcDeee", "YYY"));
         System.out.println(alphanumeric.matches("^hello"));
         System.out.println(alphanumeric.matches("^abcDeee"));
         System.out.println(alphanumeric.matches("^abcDeeeF12Ghhiiiijkl99z"));
 
         // create a replacement if string ends with ...
+        // this will replace "ijkl99z" at the end of the string with "YYY"
         System.out.println(alphanumeric.replaceAll("ijkl99z$", "THE END"));
         System.out.println(alphanumeric.replaceAll("[aei]", "X"));
         System.out.println(alphanumeric.replaceAll("[aei]", "I replaced a letter here"));
