@@ -27,7 +27,13 @@ public class Main {
 
         // secondChallenge10();
 
-        secondChallenge11();
+        // secondChallenge11();
+
+        // thirdChallenge12();
+
+        // thirdChallenge13();
+
+        thirdChallenge14();
 
     }
 
@@ -225,7 +231,45 @@ public class Main {
         while(matcher8.find()) {
             System.out.println("Occurrence: " + matcher8.group(1));
         }
+
+//        regex = ".*([0-9]{1}[\\,]{1}[ ]{1}[0-9]{1}).*";
+        regex = "\\{(.+?)\\}";
+        pattern = Pattern.compile(regex);
+        matcher8 = pattern.matcher(challenge11);
+        System.out.println(matcher8.matches());
+
     }
+
+    /**
+     * Write a regular expression that will match a 5-digit US zip code. Use "11111" as your test string.
+     *
+     */
+
+    public static void thirdChallenge12() {
+        String challenge12 = "11111";
+        System.out.println(challenge12.matches("^\\d{5}$"));
+    }
+
+    /**
+     * US zip codes can be followed by a dash and another four numbers. Write a regular expression that will match those
+     * zip codes. use "11111-1111" as your test string
+     *
+     */
+
+    public static void thirdChallenge13() {
+        String challenge13 = "11111-1111";
+//        System.out.println(challenge13.matches("^\\d{5}\\-\\d{4}$"));
+        System.out.println(challenge13.matches("^\\d{5}-\\d{4}$"));
+    }
+
+    public static void thirdChallenge14() {
+        String challenge14_1 = "11111";
+        String challenge14_2 = "11111-1111";
+        System.out.println(challenge14_1.matches("^\\d{5}(\\-\\d{4})?$"));
+        System.out.println(challenge14_2.matches("^\\d{5}(\\-\\d{4})?$"));
+    }
+
+
 
     public static void demo() {
         String string = "I am a string. Yes, I am.";
@@ -268,7 +312,7 @@ public class Main {
         // replaces the occurrences of letters a-f, A-F, 3-8 case insensitive -- ?i for ASCII ?iu for unicode
         System.out.println(newAlphanumeric.replaceAll("(?i)[a-f3-8]", "X"));
         System.out.println(newAlphanumeric.replaceAll("[0-9]", "X"));
-        // "\\d" is meant for digits so we don't have to put [0-9]
+        // "\\d" is meant for digits so we that don't have to put [0-9]
         System.out.println(newAlphanumeric.replaceAll("\\d", "X"));
         // "\\D" is meant for all non digits
         System.out.println(newAlphanumeric.replaceAll("\\D", "X"));

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e14f800-c50c-4cf4-959b-fe5a6c2b604a" name="Default" comment="solved first challenge">
+    <list default="true" id="7e14f800-c50c-4cf4-959b-fe5a6c2b604a" name="Default" comment="regular expressions second challenge completed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Regular Expressions/com/timbuchalka/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Regular Expressions/com/timbuchalka/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/timbuchalka/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/timbuchalka/Main.java" afterDir="false" />
@@ -594,7 +594,7 @@
       <updated>1476152379227</updated>
       <workItem from="1476152382108" duration="1763000" />
       <workItem from="1476226706298" duration="1696000" />
-      <workItem from="1631099291969" duration="19572000" />
+      <workItem from="1631099291969" duration="22284000" />
     </task>
     <task id="LOCAL-00001" summary="Live code along">
       <created>1631100911393</created>
@@ -638,7 +638,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631122696005</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="regular expressions second challenge completed">
+      <created>1631136449528</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1631136449528</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -714,7 +721,8 @@
     <MESSAGE value="more code along..." />
     <MESSAGE value="solved challenge 1" />
     <MESSAGE value="solved first challenge" />
-    <option name="LAST_COMMIT_MESSAGE" value="solved first challenge" />
+    <MESSAGE value="regular expressions second challenge completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="regular expressions second challenge completed" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
