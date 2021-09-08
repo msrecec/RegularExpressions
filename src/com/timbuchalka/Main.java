@@ -112,6 +112,7 @@ public class Main {
         // we want the opening tag, the closing tag and everything in between including potential <h2></h2> tags
         // String h2GroupPattern = "(<h2>.*</h2>)";
         // lazy quantifier for seperate occurrences of <h2> - it groups <h2>Something in between</h2> in seperate groups
+        // so every occurrence of <h2>Something in between</h2> is printed out
         String h2GroupPattern = "(<h2>.*?</h2>)";
         Pattern groupPattern = Pattern.compile(h2GroupPattern);
         Matcher groupMatcher = groupPattern.matcher(htmlText);
@@ -128,7 +129,7 @@ public class Main {
             System.out.println("Occurrence: " + groupMatcher.group(1));
         }
 
-        String h2TextGroups = "(<h2>)(.+?)(</h2>)"; // <h1> group 1 (.+?) group 2 </h2> group 3 entire text in group 0
+        String h2TextGroups = "(<h2>)(.+?)(</h2>)"; // entire text in group 0 <h1> group 1 (.+?) group 2 </h2> group 3
         Pattern h2TextPattern = Pattern.compile(h2TextGroups);
         Matcher h2TextMatcher = h2TextPattern.matcher(htmlText);
 
@@ -136,5 +137,83 @@ public class Main {
             System.out.println("Occurence: " + h2TextMatcher.group(2));
         }
 
+        // "abc" "a" and "b" and "c"
+        // [Hh]arry
+        System.out.println("harry".replaceAll("[H|h]arry", "Larry"));
+        System.out.println("Harry".replaceAll("[H|h]arry", "Larry"));
+
+        // [^abc] all characters except abc
+        String tvTest = "tstvtkt";
+        // this means that we want to match all occurrences of "t" that are followed by something that isn't "v"
+        // this includes only where there is some occurrence after "t"
+        // String tNotVRegExp = "t[^v]";
+        // this means that we wan't "t" that isn't followed by "v" -- also includes where nothing is after "t"
+        String tNotVRegExp = "t(?!v)";
+        Pattern tNotVPattern = Pattern.compile(tNotVRegExp);
+        Matcher tNotVMatcher = tNotVPattern.matcher(tvTest);
+
+        count = 0;
+        while(tNotVMatcher.find()) {
+            count++;
+            System.out.println("Occurrence " + count + " : " + tNotVMatcher.start() + " to " + tNotVMatcher.end());
+        }
+
+        // t(?=v) all matches of "t" followed by "v" but we don't want to include "v" in the match
+        /**
+         * The line has to start with "(" - we have to escape it with "\"
+         * {1} quantifier that indicates 1 opening parentheses
+         *
+         */
+        // ^([\(]{1}[0-9]{3}[\)]{1}[ ]{1}[0-9]{3}[\-]{1}[0-9]{4})$
+        String phone1 = "1234567890"; // Shouldn't match
+        String phone2 = "(123) 456-7890"; // match
+        String phone3 = "123 456-7890"; // Shouldn't match
+        String phone4 = "(123)456-7890"; // Shouldn't match
+
+        System.out.println("phone1 = " + phone1.matches("^([\\(]{1}[0-9]{3}[\\)]{1}[ ]{1}[0-9]{3}[\\-]{1}[0-9]{4})$"));
+        System.out.println("phone2 = " + phone2.matches("^([\\(]{1}[0-9]{3}[\\)]{1}[ ]{1}[0-9]{3}[\\-]{1}[0-9]{4})$"));
+        System.out.println("phone3 = " + phone3.matches("^([\\(]{1}[0-9]{3}[\\)]{1}[ ]{1}[0-9]{3}[\\-]{1}[0-9]{4})$"));
+        System.out.println("phone4 = " + phone4.matches("^([\\(]{1}[0-9]{3}[\\)]{1}[ ]{1}[0-9]{3}[\\-]{1}[0-9]{4})$"));
+
+        // ^4[0-9]{12}([0-9]{3})?$
+        /**
+         * This should start with 4, followed by 12 occurrences of 0-9 followed by
+         * 3 optional characters in 0-9 (which are put into a group)
+         *
+         */
+        String visa1 = "4444444444444"; // Should match
+        String visa2 = "5444444444444"; // Shouldn't match
+        String visa3 = "4444444444444444"; // Should match
+        String visa4 = "4444"; // Shouldn't match
+
+        System.out.println("visa1 = " + visa1.matches("^4[0-9]{12}([0-9]{3})?$"));
+        System.out.println("visa2 = " + visa2.matches("^4[0-9]{12}([0-9]{3})?$"));
+        System.out.println("visa3 = " + visa3.matches("^4[0-9]{12}([0-9]{3})?$"));
+        System.out.println("visa4 = " + visa4.matches("^4[0-9]{12}([0-9]{3})?$"));
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
