@@ -9,24 +9,23 @@ public class Main {
         System.out.println(yourString);
 
         String alphanumeric = "abcDeeeF12Ghhiiiijkl99z";
-        System.out.println(alphanumeric.replaceAll(".","Y"));
+        // create a replacement for the entire string
+        System.out.println(alphanumeric.replaceAll(".", "Y"));
 
-        System.out.println(alphanumeric.replaceAll("^abcDeee", "YYY"));
+        System.out.println(alphanumeric.replaceAll("^abcDee", "YYY"));
 
         String secondString = "abcDeeeF12GhhabcDeeeiiiijkl99z";
-        System.out.println(secondString.replaceAll("^abcDeee", "YYY"));
-
+        // create a replacement if string starts with ...
+        System.out.println(secondString.replaceAll("^abcDee", "YYY"));
         System.out.println(alphanumeric.matches("^hello"));
         System.out.println(alphanumeric.matches("^abcDeee"));
-        System.out.println(alphanumeric.matches("abcDeeeF12Ghhiiiijkl99z"));
+        System.out.println(alphanumeric.matches("^abcDeeeF12Ghhiiiijkl99z"));
 
+        // create a replacement if string ends with ...
         System.out.println(alphanumeric.replaceAll("ijkl99z$", "THE END"));
         System.out.println(alphanumeric.replaceAll("[aei]", "X"));
         System.out.println(alphanumeric.replaceAll("[aei]", "I replaced a letter here"));
-        System.out.println(alphanumeric.replaceAll("[aei][Fj]", "X"));
-
-
-
-
+        // create a replacement if one of the letters "aei" is followed by "Fj"
+        System.out.println(alphanumeric.replaceAll("[aei][Fj]","X"));
     }
 }
