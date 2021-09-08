@@ -19,7 +19,15 @@ public class Main {
 
         // firstChallenge6();
 
-        firstChallenge7();
+        // firstChallenge7();
+
+        // secondChallenge8();
+
+        // secondChallenge9();
+
+        // secondChallenge10();
+
+        secondChallenge11();
 
     }
 
@@ -136,6 +144,89 @@ public class Main {
 
     }
 
+    /**
+     * Modify the regular expression in challenge 7 to use a group, so that we can print all the digits that occur
+     * in a string that contains multiple occurrences of the pattern. Write all the code required to accomplish
+     * this (create a pattern and matcher, etc ...). Use the following string to test your code.
+     *
+     * String challenge8 = "abcd.135uvqz.7tzik.99";
+     *
+     */
+
+    public static void secondChallenge8() {
+        String challenge8 = "abcd.135uvqz.7tzik.99";
+        String regex = "[A-Za-z]+\\.(\\d+)";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher8 = pattern.matcher(challenge8);
+        while(matcher8.find()) {
+            System.out.println("Occurrence: " + matcher8.group(1));
+        }
+    }
+
+    /**
+     * Let's suppose we're reading strings that match the patterns we used in challenges 7 and 8 from a file.
+     * Tabs are used to seperate the matches, with one exception. The last match is followed by a newline.
+     * Our revised challenge 8 string would look like this:
+     *
+     * String challenge9: "abcd.135\tuvqz.7\ttzik.999\n";
+     *
+     * Revise the regular expression accordingly and extract all the numbers, as we did in challenge 8.
+     *
+     */
+
+    public static void secondChallenge9() {
+        String challenge9 = "abcd.135\tuvqz.7\ttzik.999\n";
+        String regex = "[A-Za-z]+\\.(\\d+)\\s";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher8 = pattern.matcher(challenge9);
+        while(matcher8.find()) {
+            System.out.println("Occurrence: " + matcher8.group(1));
+        }
+    }
+
+    /**
+     * Instead of printing out the numbers themselves, print out their start and end indices. Use the same string
+     * we used for challenge 9. Make those indices inclusive. For example, the start index printed for 135 should
+     * be 5, and the end index should be 7. Hint: You will need to look at the documentation for the Matcher.start()
+     * and Matcher.end() methods. There's more than one version of these methods. The documentation is here:
+     *
+     * https://docs.oracle.com/javase/8/docs/api/java/util/regex/Matcher.html
+     *
+     */
+
+    public static void secondChallenge10() {
+        String challenge9 = "abcd.135\tuvqz.7\ttzik.999\n";
+//        String regex = "(\\d+)";
+        String regex = "[A-Za-z]+\\.(\\d+)\\s";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher8 = pattern.matcher(challenge9);
+        while(matcher8.find()) {
+//            System.out.println("Occurrence: start " + matcher8.start() + " end " + (matcher8.end()-1));
+            System.out.println("Occurrence: start " + matcher8.start(1) + " end " + (matcher8.end(1)-1));
+        }
+    }
+
+    /**
+     * Suppose we have the following string containing ports on a graph within curly braces.
+     * Extract what's in the curly braces.
+     *
+     * String challenge11 = "{0, 2}, {0, 5}, {1, 3}, {2, 4}";
+     *
+     */
+
+    public static void secondChallenge11() {
+        String challenge11 = "{0, 2}, {0, 5}, {1, 3}, {2, 4}";
+        // ? turns this quantifier into a lazy quantifier to prevent matching of more characters that we might want
+        // e.g. 0, 2}, {0, 5}, {1, 3}, {2, 4 where first "{" and last "}" are omitted
+//        String regex = "\\{(.+?)\\}";
+        String regex = "([0-9]{1}[\\,]{1}[ ]{1}[0-9]{1})";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher8 = pattern.matcher(challenge11);
+        while(matcher8.find()) {
+            System.out.println("Occurrence: " + matcher8.group(1));
+        }
+    }
+
     public static void demo() {
         String string = "I am a string. Yes, I am.";
         System.out.println(string);
@@ -244,7 +335,7 @@ public class Main {
         // String h2GroupPattern = "(<h2>)";
         // we want the opening tag, the closing tag and everything in between including potential <h2></h2> tags
         // String h2GroupPattern = "(<h2>.*</h2>)";
-        // lazy quantifier for seperate occurrences of <h2> - it groups <h2>Something in between</h2> in seperate groups
+        // lazy quantifier "?" for seperate occurrences of <h2> - it groups <h2>Something in between</h2> in seperate groups
         // so every occurrence of <h2>Something in between</h2> is printed out
         String h2GroupPattern = "(<h2>.*?</h2>)";
         Pattern groupPattern = Pattern.compile(h2GroupPattern);
